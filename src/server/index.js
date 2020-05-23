@@ -29,7 +29,7 @@ app.get("/*", (request, response) => {
 // Listen, create server
 // - Configurable dev and prod ports, currently the same because of
 //   using a reverse proxy
-const server = app.listen(port);
+const server = app.listen(DEVELOPMENT ? 8080 : 8080);
 
 // Create Socket.io server on express server instance
 export const io = SocketIO.listen(server);
