@@ -39,7 +39,7 @@ export default class App extends React.Component {
 	}
 
 	connect(namespace) {
-		const socketAddress = (process.env.NODE_ENV === "development" ? ":8080" : "");
+		const socketAddress = process.env.PORT || 8000;
 		const socketPath = `${socketAddress}/${namespace}`;
 
 		// Create socket from `io`
