@@ -12,7 +12,7 @@ import * as speaker from "./speaker";
 
 
 const DEVELOPMENT = process.env.NODE_ENV === "development";
-
+const port = process.env.PORT || 3000;
 
 // Setup express app
 const app = express();
@@ -29,7 +29,7 @@ app.get("/*", (request, response) => {
 // Listen, create server
 // - Configurable dev and prod ports, currently the same because of
 //   using a reverse proxy
-const server = app.listen(DEVELOPMENT ? 8080 : 8080);
+const server = app.listen(port);
 
 // Create Socket.io server on express server instance
 export const io = SocketIO.listen(server);
@@ -134,4 +134,4 @@ speakerNamespace.on("connect", function (socket) {
 
 
 // eslint-disable-next-line no-console
-console.log(`Server is running at ${DEVELOPMENT ? "localhost:8080" : "poll.tritonmun.org"}/`);
+console.log(`Server is running at ${DEVELOPMENT ? "localhost:$port" : "poll.tritonmun.org"}/`);
